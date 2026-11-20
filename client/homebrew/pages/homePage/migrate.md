@@ -1,5 +1,5 @@
 # How to Convert a Legacy Document to v3
-Here you will find a number of steps to guide you through converting a Legacy document into a Homebrewery v3 document.
+Here you will find a number of steps to guide you through converting a Legacy document into a DraftHouse v3 document.
 
 **The first thing you'll want to do is switch the editor's rendering engine from `Legacy` to `v3`.** This will be the renderer we design features for moving forward.
 
@@ -10,9 +10,9 @@ There are some examples of Legacy code in the code pane if you need more context
 ## Simple Replacements
 To make your life a little easier with this section, a text editor like [VSCode](https://code.visualstudio.com/) or Notepad will help a lot.
 
-The following table describes Legacy and other document elements and their Homebrewery counterparts. A simple find/replace should get these in working order.
+The following table describes Legacy and other document elements and their DraftHouse counterparts. A simple find/replace should get these in working order.
 
-| Legacy / Other  | Homebrewery                  |
+| Legacy / Other  | DraftHouse                  |
 |:----------------|:-----------------------------|
 | `\pagebreak`    | `\page`                      |
 | `======`        | `\page`                      |
@@ -22,7 +22,7 @@ The following table describes Legacy and other document elements and their Homeb
 | `.phb`          | `.page`                      |
 
 ## Classed or Styled Divs
-Anything that relies on the following syntax can be changed to the new Homebrewery v3 curly brace syntax:
+Anything that relies on the following syntax can be changed to the new DraftHouse v3 curly brace syntax:
 
 ```
 <div class="classTable wide">
@@ -47,7 +47,7 @@ Any manual margins and padding to push text down the page will likely need to be
 
 ## Notes
 
-In Legacy, notes are denoted using markdown blockquote syntax. In Homebrewery v3, this is replaced by the curly brace syntax.
+In Legacy, notes are denoted using markdown blockquote syntax. In DraftHouse v3, this is replaced by the curly brace syntax.
 
 <!--
 > ##### Catchy Title
@@ -98,7 +98,7 @@ Split tables also use the curly brace syntax, as the new renderer can handle sty
 }}
 
 ## Blockquotes
-Blockquotes are denoted by the `>` character at the beginning of the line. In Homebrewery's v3 renderer, they hold virtually no meaning and have no CSS styling. You are free to use blockquotes when styling your document or creating themes without needing to worry about your CSS affecting other parts of the document.
+Blockquotes are denoted by the `>` character at the beginning of the line. In DraftHouse's v3 renderer, they hold virtually no meaning and have no CSS styling. You are free to use blockquotes when styling your document or creating themes without needing to worry about your CSS affecting other parts of the document.
 
 {{pageNumber,auto}}
 
@@ -106,7 +106,7 @@ Blockquotes are denoted by the `>` character at the beginning of the line. In Ho
 
 ## Stat Blocks
 
-There are pretty significant differences between stat blocks on the Legacy renderer and Homebrewery v3. This section contains a list of changes that will need to be made to update the stat block.
+There are pretty significant differences between stat blocks on the Legacy renderer and DraftHouse v3. This section contains a list of changes that will need to be made to update the stat block.
 
 ### Initial Changes
 You will want to **remove all leading** `___` that started the stat block in Legacy, and replace that with `{{monster` before the stat block, and `}}` after it.
@@ -119,7 +119,7 @@ You will want to **remove all leading** `___` that started the stat block in Leg
 The key difference is the lack of blockquotes. Legacy documents use the `>` symbol at the start of the line for each line in the stat block, and the v3 renderer does not. **You will want to remove all `>` characters at the beginning of all lines, and delete any leading spaces.**
 
 ### Lists
-The basic characteristics and advanced characteristics sections are not list elements in Homebrewery. You will want to **remove all `-` or `*` characters from the beginning of lines.**
+The basic characteristics and advanced characteristics sections are not list elements in DraftHouse. You will want to **remove all `-` or `*` characters from the beginning of lines.**
 
 ### Spacing
 In order to have the correct spacing after removing the list elements, you will want to **add two colons between the name of each basic/advanced characteristic and its value.** _(see example in the code pane)_
@@ -163,7 +163,7 @@ ___
 > ***Longbow.*** *Ranged Weapon Attack:* +4 to hit, range 150/600 ft., one target. *Hit:* 6 (1d8 + 2) piercing damage.
 -->
 
-### Homebrewery v3 Example:
+### DraftHouse v3 Example:
 
 {{monster
 ## Centaur

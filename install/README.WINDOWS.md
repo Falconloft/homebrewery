@@ -22,7 +22,7 @@ These instructions assume that you are installing to a completely new, fresh Win
   a. Navigate to the location of the script, e.g. `cd C:\Users\ExampleUser\Downloads`.
   b. Start the script - `.\install.ps1`
 
-5. Once the script has completed, it will start the Homebrewery server. This will normally cause a Network Access prompt for NodeJS - if this appears, click "Allow".
+5. Once the script has completed, it will start the DraftHouse server. This will normally cause a Network Access prompt for NodeJS - if this appears, click "Allow".
 
 **NOTE:** At this time, the script **ONLY** installs HomeBrewery. It does **NOT** install the NaturalCrit login system, as that is currently a completely separate project.
 

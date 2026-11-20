@@ -75,7 +75,7 @@ A sign-in with Google only lasts a year until the authentication expires.  You m
 
 ### I lost my password, how do I reset it?  How do I change my password?
 
-Homebrewery is specifically designed to not hold personal information as a measure to protect both users and admin, and does not require an email address.  Thus it would be difficult to send a new password to a user.  Reach out to the moderators on [the subreddit](https://www.reddit.com/r/homebrewery) with your Homebrewery username.  
+DraftHouse is specifically designed to not hold personal information as a measure to protect both users and admin, and does not require an email address.  Thus it would be difficult to send a new password to a user.  Reach out to the moderators on [the subreddit](https://www.reddit.com/r/homebrewery) with your DraftHouse username.  
 
 If you have linked your account with a Google account, you would change your password within Google.
 
@@ -83,7 +83,7 @@ If you have linked your account with a Google account, you would change your pas
 
 In your brew, there is an icon, :fas_clock_rotate_left:, that button opens up a menu with versions of your brew, stored in order from newer to older, up to a week old. Because of the amount of duplicates this function creates, this information is stored in **your browser**, so if you were to uninstall it or clear your cookies and site data, or change computers, the info will not be there.
 
-Also, we do have daily backups of our database that we keep for 8 days, and you can contact the moderators on [the subreddit](https://www.reddit.com/r/homebrewery) with your Homebrewery username, the name of the lost brew, and the last known time it was working properly. We can manually look through our backups and restore it if it exists.
+Also, we do have daily backups of our database that we keep for 8 days, and you can contact the moderators on [the subreddit](https://www.reddit.com/r/homebrewery) with your DraftHouse username, the name of the lost brew, and the last known time it was working properly. We can manually look through our backups and restore it if it exists.
 
 
 ### I worked on a brew for X hours, and suddenly all the text disappeared!
@@ -106,12 +106,12 @@ The best way to avoid this is to leave space at the end of a column equal to one
 
 ### Why do I need to manually create a new page?  Why doesn't text flow between pages?
 
-A Homebrewery document is at its core an HTML & CSS document, and currently limited by the specs of those technologies.  It is currently not possible to flow content from inside one box ("page") to the inside of another box.  It seems likely that someday CSS will add this capability, and if/when that happens, Homebrewery will adopt it as soon as possible.
+A DraftHouse document is at its core an HTML & CSS document, and currently limited by the specs of those technologies.  It is currently not possible to flow content from inside one box ("page") to the inside of another box.  It seems likely that someday CSS will add this capability, and if/when that happens, DraftHouse will adopt it as soon as possible.
 
 ### Where do I get images?
-The Homebrewery does not provide images for use besides some page elements and example images for snippets.  You will need to find your own images for use and be sure you are following the appropriate license requirements.  
+DraftHouse does not provide images for use besides some page elements and example images for snippets.  You will need to find your own images for use and be sure you are following the appropriate license requirements.  
 
-Once you have an image you would like to use, it is recommended to host it somewhere that won't disappear; commonly, people host their images on [Imgur](https://www.imgur.com).  Create an account and upload your images there, and use the *Direct Link* that is shown when you click into the image from the gallery in your Homebrewery document.
+Once you have an image you would like to use, it is recommended to host it somewhere that won't disappear; commonly, people host their images on [Imgur](https://www.imgur.com).  Create an account and upload your images there, and use the *Direct Link* that is shown when you click into the image from the gallery in your DraftHouse document.
 
 \page
 
@@ -120,9 +120,9 @@ The fonts used were originally created for use with the English language, though
 
 ### I have white borders on the bottom/sides of the print preview.
 
-The Homebrewery paper size and your print paper size do not match.
+DraftHouse paper size and your print paper size do not match.
 
-The Homebrewery defaults to creating US Letter page sizes.  If you are printing with A4 size paper, you must add the "A4 Page Size" snippet.  In the "Print" dialog be sure your Paper Size matches the page size in Homebrewery.
+DraftHouse defaults to creating US Letter page sizes.  If you are printing with A4 size paper, you must add the "A4 Page Size" snippet.  In the "Print" dialog be sure your Paper Size matches the page size in DraftHouse.
 
 
 ### Typing `#### Adhesion` in the text editor doesn't show the header at all in the completed page?

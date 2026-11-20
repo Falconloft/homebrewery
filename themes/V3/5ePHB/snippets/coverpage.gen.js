@@ -149,7 +149,7 @@ export default {
 			{{logo
 			![](${domain}/assets/naturalCritLogoWhite.svg)
 
-			Homebrewery.Naturalcrit.com
+			DraftHouse
 			}}`;
 	}
 };

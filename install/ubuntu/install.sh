@@ -49,32 +49,32 @@ if [ ${MATCHED} == "No" ]; then
 fi
     
 # Install required packages
-echo ::Install Homebrewery requirements
+echo ::Install DraftHouse requirements
 apt satisfy -y git nodejs npm mongodb-org
 
 # Enable and start Mongo
 systemctl enable mongod
 systemctl start mongod
 
-# Clone Homebrewery repo
-echo ::Get Homebrewery files
+# Clone DraftHouse repo
+echo ::Get DraftHouse files
 cd /usr/local/
 git clone https://github.com/naturalcrit/homebrewery.git
 
-# Install Homebrewery
-echo ::Install Homebrewery
+# Install DraftHouse
+echo ::Install DraftHouse
 cd homebrewery
 npm install
 npm audit fix
 npm run postinstall
 
-# Create Homebrewery service
-echo ::Create Homebrewery service
+# Create DraftHouse service
+echo ::Create DraftHouse service
 ln -s /usr/local/homebrewery/install/ubuntu/etc/systemd/system/homebrewery.service /etc/systemd/system/homebrewery.service
 systemctl daemon-reload
-echo ::Set Homebrewery to start automatically
+echo ::Set DraftHouse to start automatically
 systemctl enable homebrewery
 
-# Start Homebrewery
-echo ::Start Homebrewery
+# Start DraftHouse
+echo ::Start DraftHouse
 systemctl start homebrewery

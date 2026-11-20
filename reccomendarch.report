@@ -1,0 +1,319 @@
+# Microsoft Publisher Replacement Architecture Report
+
+## Design Goal
+
+Keep the existing DraftHouse Markdown, theme, page, and browser-print rendering engines intact. Add Microsoft Publisher-like editing through an absolute-positioned **page-object overlay** and structured brew metadata.
+
+Do not rewrite:
+
+- the Markdown/marked-hbfm rendering pipeline
+- theme inheritance
+- the iframe renderer
+- page splitting
+- browser print/PDF generation
+
+## Least-Invasive Architecture
+
+Render an additional object layer inside each existing page:
+
+```text
+.page
+  .columnWrapper       # Existing Markdown output
+  .pageObjectLayer     # Publisher-like positioned objects
+  .guideLayer          # Edit-mode-only guides
+```
+
+The existing Markdown flow remains responsible for normal document text. The object layer is responsible for positioned images, text boxes, shapes, guides, and stacking.
+
+## Core Extension Point
+
+The main implementation point is [BrewRenderer](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.jsx).
+
+Add:
+
+- a `PageObjectLayer` component
+- a `PageObject` or generic object component
+- page-index and edit-mode props
+- pointer-drag and resize handling
+- object sorting by `zIndex`
+
+Keep `renderPage()` and `hbfm.render()` unchanged. Keep `BrewPage` as the page wrapper and add the object layer beside `columnWrapper`.
+
+The iframe and page DOM are already isolated by `react-frame-component`, so visual editing can be contained in [BrewRenderer](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.jsx) and its CSS.
+
+## Styling Extension Point
+
+Add additive styles to [brewRenderer.less](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.less):
+
+- `.page { position: relative; }`
+- `.pageObjectLayer { position: absolute; inset: 0; pointer-events: none; }`
+- `.pageObject { position: absolute; pointer-events: auto; }`
+- selection handles
+- hover and locked states
+- guide and grid styles
+
+Keep the existing page dimensions:
+
+```text
+215.9mm x 279.4mm
+```
+
+Object coordinates should use millimeters or percentages. Millimeters align most closely with existing print dimensions.
+
+Hide guides, selection handles, and editing affordances under `@media print`.
+
+## Draggable Images
+
+Implement image objects as absolute DOM elements rather than changing Markdown image syntax.
+
+Example object:
+
+```text
+{
+  id: "image-1",
+  page: 1,
+  type: "image",
+  layer: 3,
+  x: "25mm",
+  y: "30mm",
+  width: "80mm",
+  height: "50mm",
+  rotation: "0deg",
+  src: "/assets/example.png"
+}
+```
+
+Relevant files:
+
+- [BrewRenderer](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.jsx)
+- [brewRenderer.less](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.less)
+- [Editor](/home/ablc/projects/homebrewery/client/homebrew/editor/editor.jsx)
+- [SnippetBar](/home/ablc/projects/homebrewery/client/homebrew/editor/snippetbar/snippetbar.jsx)
+
+The existing image-mask snippets remain backward compatible:
+
+- [imageMask.gen.js](/home/ablc/projects/homebrewery/themes/V3/Blank/snippets/imageMask.gen.js)
+- [Legacy snippets.js](/home/ablc/projects/homebrewery/themes/Legacy/5ePHB/snippets.js)
+
+Positioned image objects can be introduced as a new opt-in mode rather than replacing existing Markdown images.
+
+## Text Boxes
+
+Store text boxes as positioned objects:
+
+```text
+{
+  id: "text-1",
+  page: 2,
+  type: "text",
+  layer: 2,
+  x: "25mm",
+  y: "40mm",
+  width: "90mm",
+  height: "30mm",
+  content: "## Heading\n\nText..."
+}
+```
+
+In edit mode:
+
+- use `contentEditable` or a small textarea overlay
+- update the object model on input
+- provide selection and resize handles
+
+In view/preview mode:
+
+- render the content with the existing `marked-hbfm` parser
+- optionally support the existing Legacy parser for Legacy documents
+
+Relevant files:
+
+- [BrewRenderer](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.jsx)
+- [CodeEditor](/home/ablc/projects/homebrewery/client/components/codeEditor/codeEditor.jsx)
+- [helpers.js](/home/ablc/projects/homebrewery/shared/helpers.js)
+- [markdownLegacy.js](/home/ablc/projects/homebrewery/shared/markdownLegacy.js)
+
+Do not initially add a new text-box Markdown syntax. Store boxes in structured metadata and optionally add a `{{textbox}}` syntax later.
+
+## Positioned Shapes
+
+Render shapes through the same generic object layer:
+
+```text
+{
+  id: "shape-1",
+  page: 1,
+  type: "shape",
+  shape: "rectangle",
+  layer: 1,
+  x: "10mm",
+  y: "20mm",
+  width: "50mm",
+  height: "20mm",
+  fill: "#ffffff",
+  stroke: "#000000",
+  strokeWidth: "1px",
+  radius: "2mm"
+}
+```
+
+Initial supported shapes should include:
+
+- rectangle
+- ellipse
+- rounded rectangle
+- line
+- arrow
+- divider
+
+Relevant files:
+
+- [BrewRenderer](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.jsx)
+- [brewRenderer.less](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.less)
+
+This does not require theme or Markdown changes.
+
+## Page Guides
+
+Guides should be viewer-only and should never be included in printed page content.
+
+Add a guide layer above the object layer in edit mode:
+
+- vertical guides
+- horizontal guides
+- margin guides
+- grid guides
+- custom guides
+- snap-to-guide
+- snap-to-grid
+
+Example settings:
+
+```text
+{
+  page: 1,
+  guides: {
+    grid: "5mm",
+    vertical: ["25mm", "190mm"],
+    horizontal: ["25mm", "254mm"],
+    snap: true
+  }
+}
+```
+
+Relevant files:
+
+- [BrewRenderer](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.jsx)
+- [brewRenderer.less](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.less)
+- [ToolBar](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/toolBar/toolBar.jsx)
+- [ToolBar CSS](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/toolBar/toolBar.less)
+
+The guide controls fit naturally into the existing toolbar.
+
+## Layers
+
+Add `layer` and `zIndex` fields to every object.
+
+Render objects sorted in ascending stacking order:
+
+```text
+const orderedObjects = pageObjects
+  .filter((object) => object.page === pageIndex)
+  .sort((a, b) => a.zIndex - b.zIndex);
+```
+
+Initial layer operations:
+
+- bring to front
+- send to back
+- move forward
+- move backward
+- show/hide
+- lock/unlock
+
+Relevant files:
+
+- [BrewRenderer](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.jsx)
+- [Editor](/home/ablc/projects/homebrewery/client/homebrew/editor/editor.jsx)
+- [brewRenderer.less](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.less)
+
+No theme or existing layout behavior needs to change.
+
+## Data and Persistence
+
+Add one primary brew field:
+
+```text
+pageObjects
+```
+
+Recommended default:
+
+```text
+pageObjects: []
+```
+
+Update persistence surfaces:
+
+- [brewDefaults.js](/home/ablc/projects/homebrewery/server/brewDefaults.js)
+- [homebrew.model.js](/home/ablc/projects/homebrewery/server/homebrew.model.js)
+- [helpers.js](/home/ablc/projects/homebrewery/shared/helpers.js)
+- [MetadataEditor](/home/ablc/projects/homebrewery/client/homebrew/editor/metadataEditor/metadataEditor.jsx)
+- [homebrew.api.js](/home/ablc/projects/homebrewery/server/homebrew.api.js)
+
+The existing autosave and save pipeline will require only additive field handling:
+
+- include `pageObjects` in the client brew snapshot
+- include it in patch/save payloads
+- include it in default brew values
+- preserve it when merging with Google and MongoDB storage
+- include it in `mergeBrewText()` or store it separately in metadata
+
+Prefer storing `pageObjects` as a dedicated structured field for the first implementation. An optional metadata block export can be added later.
+
+## Existing Components to Reuse
+
+- [EditorPage](/home/ablc/projects/homebrewery/client/homebrew/pages/basePages/editPage/editorPage.jsx)
+  - already owns brew state and autosave
+- [BrewRenderer](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.jsx)
+  - already owns page boundaries and iframe rendering
+- [SnippetBar](/home/ablc/projects/homebrewery/client/homebrew/editor/snippetbar/snippetbar.jsx)
+  - suitable for object insertion controls
+- [ToolBar](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/toolBar/toolBar.jsx)
+  - suitable for guide and zoom controls
+- [MetadataEditor](/home/ablc/projects/homebrewery/client/homebrew/editor/metadataEditor/metadataEditor.jsx)
+  - suitable for document layout settings
+- [printCurrentBrew](/home/ablc/projects/homebrewery/shared/helpers.js)
+  - continue using the existing browser print flow
+
+## Print and PDF Behavior
+
+Do not replace or fork [printCurrentBrew](/home/ablc/projects/homebrewery/shared/helpers.js).
+
+Continue to:
+
+1. prepare lazy images
+2. wait for image loading
+3. call `window.frames.BrewRenderer.contentWindow.print()`
+4. let the browser print/Save as PDF
+
+Print CSS in [brewRenderer.less](/home/ablc/projects/homebrewery/client/homebrew/brewRenderer/brewRenderer.less) will hide:
+
+- toolbar
+- header navigation
+- guides
+- selection handles
+
+Object elements remain and print using their absolute positions.
+
+## Recommended Implementation Order
+
+1. Add `pageObjects: []` to the brew defaults and schema.
+2. Add a generic absolute object layer to `BrewPage`.
+3. Add positioned shape objects.
+4. Add positioned text-box objects.
+5. Add image insertion and drag/resize handles.
+6. Add guide and grid rendering.
+7. Add snapping and alignment controls.
+8. Add a layer panel and stacking controls.
+9. Optionally export objects into a metadata block.

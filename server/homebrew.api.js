@@ -64,7 +64,7 @@ const api = {
 		}
 
 		// ID Validation Checks
-		// Homebrewery ID
+		// DraftHouse ID
 		// Typically 12 characters, but the DB shows a range of 7 to 14 characters
 		if(!id.match(/^[a-zA-Z0-9-_]{7,14}$/)){
 			throw { name: 'ID Error', message: 'Invalid ID', status: 404, HBErrorCode: '11', brewId: id };
@@ -125,7 +125,7 @@ const api = {
 				admin : { $or: [{ editId: id }, { shareId: id }] }
 			};
 
-			// Try to find the document in the Homebrewery database -- if it doesn't exist, that's fine.
+			// Try to find the document in the DraftHouse database -- if it doesn't exist, that's fine.
 			let stub = await HomebrewModel.get(accessMap[accessType])
 				.catch((err)=>{
 					if(googleId)
@@ -164,7 +164,7 @@ const api = {
 							throw { ...googleError, HBErrorCode: '01' };
 					});
 
-				// Combine the Homebrewery stub with the google brew, or if the stub doesn't exist just use the google brew
+				// Combine the DraftHouse stub with the google brew, or if the stub doesn't exist just use the google brew
 				stub = stub ? _.assign({ ...api.excludeStubProps(stub), stubbed: true }, api.excludeGoogleProps(googleBrew)) : googleBrew;
 			}
 
@@ -221,7 +221,7 @@ const api = {
 	excludePropsFromUpdate : (brew)=>{ //Remove props that should not update/overwrite when editing
 		return _.omit(brew, ['_id', 'views', 'lastViewed']);
 	},
-	excludeGoogleProps : (brew)=>{ //Remove props that should not be saved to Google (only stored to Homebrewery stub)
+	excludeGoogleProps : (brew)=>{ //Remove props that should not be saved to Google (only stored to DraftHouse stub)
 		return _.omit(brew, ['version', 'tags', 'systems', 'published', 'authors', 'invitedAuthors', 'owner', 'views', 'thumbnail']);
 	},
 	excludeStubProps : (brew)=>{ //Remove props that should not be saved to stub-only brews
@@ -428,7 +428,7 @@ const api = {
 		const saved = await brew.save()
 			.catch((err)=>{
 				console.error(err);
-				res.status(err.status || 500).send(err.message || 'Unable to save brew to Homebrewery database');
+				res.status(err.status || 500).send(err.message || 'Unable to save brew to DraftHouse database');
 			});
 
 		if(!saved) return;
@@ -492,7 +492,7 @@ const api = {
 					});
 			} else {
 				if(shouldDeleteGoogleBrew) {
-					// When there are still authors remaining, we delete the google brew but store the full brew in the Homebrewery database
+					// When there are still authors remaining, we delete the google brew but store the full brew in the DraftHouse database
 					brew.googleId = undefined;
 				}
 				brew.markModified('authors'); //Mongo will not properly update arrays without markModified()

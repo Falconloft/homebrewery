@@ -102,8 +102,8 @@ const BrewItem = ({
 			);
 		}
 		return (
-			<span className='storage' title='Homebrewery Storage'>
-				<img className='homebreweryIcon' src={theme === 'light' ? homebreweryIconBlack : homebreweryIconWhite} alt='Homebrewery Storage' />
+			<span className='storage' title='DraftHouse Storage'>
+				<img className='homebreweryIcon' src={theme === 'light' ? homebreweryIconBlack : homebreweryIconWhite} alt='DraftHouse Storage' />
 			</span>
 		);
 	};

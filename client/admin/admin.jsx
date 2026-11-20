@@ -25,7 +25,7 @@ const Admin = ()=>{
 			<header>
 				<div className='container'>
 					<i className='fas fa-rocket' />
-					The Homebrewery Admin Page
+					DraftHouse Admin Page
 					<a href='/'>back to homepage</a>
 				</div>
 			</header>

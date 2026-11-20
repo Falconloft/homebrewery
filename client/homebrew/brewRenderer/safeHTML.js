@@ -1,4 +1,4 @@
-// Derived from the vue-html-secure package, customized for Homebrewery
+// Derived from the vue-html-secure package, customized for DraftHouse
 
 let doc = null;
 let div = null;

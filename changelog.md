@@ -149,7 +149,7 @@ Fixes issue [#5069](https://github.com/naturalcrit/homebrewery/issues/5069)
 
 Fixes issue [#5020](https://github.com/naturalcrit/homebrewery/issues/5020)
 
-* [x] Prevent co-authors moving brews between Google and Homebrewery storage.
+* [x] Prevent co-authors moving brews between Google and DraftHouse storage.
 
 Fixes issue [#4862](https://github.com/naturalcrit/homebrewery/issues/4862)
 
@@ -667,7 +667,7 @@ Fixes issue [#3744](https://github.com/naturalcrit/homebrewery/issues/3744)
 
 ##### calculuschild, 5e-Cleric
 
-* [x] Fix links in {{openSans **RECENT BREWS :fas_clock_rotate_left:**}} and user {{openSans **BREWS :fas_beer_mug_empty:**}} pointing to trashed Google Drive files after transferring from Google to Homebrewery storage
+* [x] Fix links in {{openSans **RECENT BREWS :fas_clock_rotate_left:**}} and user {{openSans **BREWS :fas_beer_mug_empty:**}} pointing to trashed Google Drive files after transferring from Google to DraftHouse storage
 
 Fixes issue [#3776](https://github.com/naturalcrit/homebrewery/issues/3776)
 }}
@@ -1419,9 +1419,9 @@ Fixes issues [#2603](https://github.com/naturalcrit/homebrewery/issues/2603)
 
 ##### Jeddai
 
-* [x] Add unit tests with full coverage for the Homebrewery API
+* [x] Add unit tests with full coverage for the DraftHouse API
 
-* [x] Add message to refresh the browser if the user is missing an update to the Homebrewery
+* [x] Add message to refresh the browser if the user is missing an update to the DraftHouse
 
 Fixes issues [#2583](https://github.com/naturalcrit/homebrewery/issues/2583)
 }}
@@ -1658,7 +1658,7 @@ Fixes issues  [#2317](https://github.com/naturalcrit/homebrewery/issues/2317), [
 
 ##### Jeddai:
 
-* [x] Brew transfers between Homebrewery and Google Drive now keep the same share and edit links! Metadata is now also kept across transfers.
+* [x] Brew transfers between DraftHouse and Google Drive now keep the same share and edit links! Metadata is now also kept across transfers.
 
   Fixes issues: [#1838](https://github.com/naturalcrit/homebrewery/issues/1838)
 
@@ -1887,7 +1887,7 @@ Fixes issues  [#2317](https://github.com/naturalcrit/homebrewery/issues/2317), [
 
 	Fixes issues: [#846](https://github.com/naturalcrit/homebrewery/issues/846)
 
-* [x] Moved the changelog to be accessible by clicking on the Homebrewery version number.
+* [x] Moved the changelog to be accessible by clicking on the DraftHouse version number.
 
 	Fixes issues: [#1166](https://github.com/naturalcrit/homebrewery/issues/1166)
 }}
@@ -1939,7 +1939,7 @@ Some features planned for V3 have actually been released over the recent months 
 Massive changelog incoming:
 
 #### Markdown+
-With the latest major update to *The Homebrewery*, we've implemented an extended Markdown-like syntax for block and span elements, plus a few other changes, eliminating the need for HTML tags like `div`, and `span` in most cases. This should hopefully aid non-coders with readability, and also allows us a few tricks in the background to fix some old issues. No raw HTML tags should be needed in a brew, and going forward, raw HTML will no longer receive debugging support (*but can still be used if you insist*).
+With the latest major update to *DraftHouse*, we've implemented an extended Markdown-like syntax for block and span elements, plus a few other changes, eliminating the need for HTML tags like `div`, and `span` in most cases. This should hopefully aid non-coders with readability, and also allows us a few tricks in the background to fix some old issues. No raw HTML tags should be needed in a brew, and going forward, raw HTML will no longer receive debugging support (*but can still be used if you insist*).
 
 All brews made prior to the release of v3.0.0 will still render normally, and you may switch between the "Legacy" brew renderer and the newer "V3" renderer via the {{fa,fa-info-circle}} **Properties** button  on your brew. Much of the syntax and styling has changed in V3, so code in one version may be broken in the other.
 
@@ -2090,7 +2090,7 @@ Term :: big long definition that bleeds onto multiple lines
 We had to make a whole lot of background upgrades and changes to get all of this working, and now that the framework is in place, there's a lot more planned and upcoming *"sometime"* :
 
 {{taskList
-* [ ] New Themes to style your brews. DMG, MM, a custom Homebrewery theme, and others.
+* [ ] New Themes to style your brews. DMG, MM, a custom DraftHouse theme, and others.
 * [ ] The ability to build your own custom themes using CSS, apply it to other brews, and share it with others!
 * [ ] Easy control of item colors. Change your monster blocks, tables, and notes from yellow to green to red!
 * [ ] New image-based snippets, including handwritten notes, title illustrations, and alternative decorations.
@@ -2183,7 +2183,7 @@ myStyle {color: black}
 
 ### Saturday, 02/5/2021 - v2.11.2
 
-- Fix for edge case where brews could accidentally transfer from Google Drive back to Homebrewery.
+- Fix for edge case where brews could accidentally transfer from Google Drive back to DraftHouse.
 - Move cursor to end of snippet after insertion
 
 \page
@@ -2220,7 +2220,7 @@ myStyle {color: black}
 - Fixed "automated request" lockouts from Google
 
 ### Friday, 18/12/2020 - v2.10.5
-- Brews now immediately save when transferring between Google Drive and Homebrewery storage.
+- Brews now immediately save when transferring between Google Drive and DraftHouse storage.
 - Added confirmation popup to clarify the transfer process.
 - Brews transferred or deleted from Google will be found in your Google Drive trash.
 - Dependency updates.
@@ -2241,7 +2241,7 @@ myStyle {color: black}
 - Fixing brews being lost when loaded via back button
 
 ### Wednesday, 07/10/2020 - v2.10.0
-- Google Drive integration -- Sign in with your Google account to link it with your Homebrewery profile. A new button in the Edit page will let you transfer your file to your personal Google Drive storage, and Google will keep a backup of each version! No more lost work surprises!
+- Google Drive integration -- Sign in with your Google account to link it with your DraftHouse profile. A new button in the Edit page will let you transfer your file to your personal Google Drive storage, and Google will keep a backup of each version! No more lost work surprises!
 
 ### Friday, 28/08/2020 - v2.9.2
 - Many dependency updates
@@ -2347,7 +2347,7 @@ myStyle {color: black}
 
 ### Monday, 07/11/2016
 - Added final touches to the html validator and updating the rest of the branch
-- If anyone finds issues with the new HTML validator, please let me know. I hope this will bring a more consistent feel to Homebrewery rendering.
+- If anyone finds issues with the new HTML validator, please let me know. I hope this will bring a more consistent feel to DraftHouse rendering.
 
 \page
 
@@ -2361,8 +2361,8 @@ myStyle {color: black}
 - If you visit a deleted brew, it will now remove it from your recent list. (Thanks u/sIllverback!)
 - Improved parsing of embedded html text in brews. (Thanks u/com-charizard!)
 - Added in a new coverpage snippet
-- Homebrewery will now try and onsert a good title for your brew if you don't provide one
-- Homebrewery now re-renders properly when you zoom
+- DraftHouse will now try and onsert a good title for your brew if you don't provide one
+- DraftHouse now re-renders properly when you zoom
 - Fixed the noteblock overlapping into titles (thanks u/dsompura!)
 - Fixed a bad search route in the admin panel (thanks u/SnappyTom!)
 
@@ -2389,7 +2389,7 @@ myStyle {color: black}
 \column
 
 ### Saturday, 04/06/2016 - v2.2.0
-- Migrating The Homebrewery over to hombrewery.naturalcrit.com. It now runs on it's own server, with it's own repo separate from the other tools I'm working on. Makes updating and deploying much easier.
+- Migrating DraftHouse over to hombrewery.naturalcrit.com. It now runs on it's own server, with it's own repo separate from the other tools I'm working on. Makes updating and deploying much easier.
 
 ### Sunday, 29/05/2016 - v2.1.0
 - Finally added a syntax for doing spell lists. A bit in-depth about why this took so long. Essentially I'm running out of syntax to use in stardard Markdown. There are too many unique elements in the PHB-style to be mapped. I solved this earlier by stacking certain elements together (eg. an `<hr>` before a `blockquote` turns it into moster state block), but those are getting unweildly. I would like to simply wrap these in `div`s with classes, but unfortunately Markdown stops processing when within HTML blocks. To get around this I wrote my own override to the Markdown parser and lexer to process Markdown within a simple div class wrapper. This should open the door for more unique syntaxes in the future. Big step!
@@ -2425,7 +2425,7 @@ It started rather small, but as more and more features were added, I decided to 
 Massive changelog incoming:
 
 #### Brews
-- New flow for creating new brews. Before creating a new brew would immedaitely create a brew in the database and let you edit it. Many people would create a new brew just to experiment and close it, which lead to many "abandoned brews" (see the Under the hood section below). This started eating up a ton of database space. You now have to manually save a new brew for the first time, however Homebrewery will store anything you don't have saved in local storage, just in case your browser crashes or whatever, it will load that up when you go back to `/homebrew/new`
+- New flow for creating new brews. Before creating a new brew would immedaitely create a brew in the database and let you edit it. Many people would create a new brew just to experiment and close it, which lead to many "abandoned brews" (see the Under the hood section below). This started eating up a ton of database space. You now have to manually save a new brew for the first time, however DraftHouse will store anything you don't have saved in local storage, just in case your browser crashes or whatever, it will load that up when you go back to `/homebrew/new`
 - Black blocking edges around notes and stat blocks when printing to PDFs have been fixed
 - Borders sometimes not showing up in the second column have been fixed
 - All pseudo-element borders have been replaced with reliable border images.
@@ -2449,7 +2449,7 @@ Massive changelog incoming:
 - Added in a whole new editor with syntax highlighting for markdown
 - Built a splitpane! Remembers where you left the split in between sessions
 - Re-organized the snippets into a hierarchical groups. Should be much easier to find what you need
-- Partial page rendering is working. The Homebrewery will now only load the viewable pages, and any page with `<style>` tags on them. If you are working on a large brew you should notice *significant* performance improvements
+- Partial page rendering is working. DraftHouse will now only load the viewable pages, and any page with `<style>` tags on them. If you are working on a large brew you should notice *significant* performance improvements
 - Edit page saving interface has been improved significantly. Auto-saves after 3 seconds on inactivity, now allows user to save at anytime. Will stop the tab from closing witha  pop-up if there are unsaved changes.
 - Navbar and overall style has been improved and spacing made more consistent
 - Elements under the hood are way more organized and should behaviour much more reliably in many sizes.

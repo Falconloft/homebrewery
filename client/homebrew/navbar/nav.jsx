@@ -11,10 +11,10 @@ const Nav = {
 		</nav>;
 	},
 	logo : ()=>{
-		return <a className='navLogo' href='https://www.naturalcrit.com'>
+		return <a className='navLogo' href='/'>
 			<NaturalCritIcon />
 			<span className='name'>
-				Natural<span className='crit'>Crit</span>
+				Draft<span className='crit'>House</span>
 			</span>
 		</a>;
 	},

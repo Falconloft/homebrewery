@@ -164,7 +164,7 @@ export default function pageRoutes({
 
 		req.ogMeta = { ...defaultMetaTags,
 			title       : `${req.params.username}'s Collection`,
-			description : 'View my collection of homebrew on the Homebrewery.'
+			description : 'View my collection of homebrew on the DraftHouse.'
 			// type        :  could be 'profile'?
 		};
 
@@ -268,7 +268,7 @@ export default function pageRoutes({
 
 		req.ogMeta = { ...defaultMetaTags,
 			title       : 'New',
-			description : 'Start crafting your homebrew on the Homebrewery!'
+			description : 'Start crafting your homebrew on the DraftHouse!'
 		};
 
 		return next();
@@ -280,7 +280,7 @@ export default function pageRoutes({
 
 		req.ogMeta = { ...defaultMetaTags,
 			title       : 'New',
-			description : 'Start crafting your homebrew on the Homebrewery!'
+			description : 'Start crafting your homebrew on the DraftHouse!'
 		};
 
 		return next();

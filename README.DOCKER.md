@@ -1,8 +1,8 @@
 # Offline Install Instructions: Docker
 
-These instructions are for setting up a persistent instance of the Homebrewery application locally using Docker.
+These instructions are for setting up a persistent instance of the DraftHouse application locally using Docker.
 
-If you intend to develop with Homebrewery, following the Homebrewery application section of this guide is not recommended. Using docker to deploy MongoDB locally for development is not a bad idea at all, however.
+If you intend to develop with DraftHouse, following the DraftHouse application section of this guide is not recommended. Using docker to deploy MongoDB locally for development is not a bad idea at all, however.
 
 # Install Docker
 
@@ -30,7 +30,7 @@ Linux installs use Docker Engine. Docker provides installers and instructions fo
 [Manage Docker as a non-root user (highly recommended)](https://docs.docker.com/engine/install/linux-postinstall/#manage-docker-as-a-non-root-user) 
 [Enable Docker to start on boot (highly recommended)](https://docs.docker.com/engine/install/linux-postinstall/#configure-docker-to-start-on-boot)
 
-# Build Homebrewery Image
+# Build DraftHouse Image
 
 Next we build the homebrewery docker image. Start by cloning the repository. 
 
@@ -82,7 +82,7 @@ If your distribution is running on an arm device such as a Raspberry Pi, you wil
 docker run --name homebrewery-mongodb -d --restart unless-stopped -v mongodata:/data/db -p 27017:27017 arm64v8/mongo:4.4
 ```
 
-## Run the Homebrewery Image
+## Run the DraftHouse Image
 ```shell
 # Make sure you run this in the homebrewery directory
 docker run --name homebrewery-app -d --restart unless-stopped -e NODE_ENV=docker -v $(pwd)/config/docker.json:/usr/src/app/config/docker.json -p 8000:8000 docker.io/library/homebrewery:latest
@@ -97,9 +97,9 @@ docker run --name homebrewery-app -d --restart unless-stopped -e NODE_ENV=docker
 
 ## Updating the Image
 
-When Homebrewery code updates, your docker container will not automatically follow the changes. To do so you will need to rebuild your homebrewery image. 
+When DraftHouse code updates, your docker container will not automatically follow the changes. To do so you will need to rebuild your homebrewery image. 
 
-First, return to your homebrewery clone (from Build Homebrewery Image above) or recreate the clone if you deleted your copy of the code. 
+First, return to your homebrewery clone (from Build DraftHouse Image above) or recreate the clone if you deleted your copy of the code. 
 
 First, delete the existing image.
 

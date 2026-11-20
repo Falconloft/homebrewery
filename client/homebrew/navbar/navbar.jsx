@@ -12,7 +12,7 @@ const Navbar = ({ children })=>{
 			<Nav.section>
 				<Nav.logo />
 				<Nav.item href='/' className='homebrewLogo'>
-					<div>The Homebrewery</div>
+					<div>DraftHouse</div>
 				</Nav.item>
 				<Nav.item newTab={true} href='/changelog' color='purple' icon='far fa-file-alt'>
 					{`v${version}`}

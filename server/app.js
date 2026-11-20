@@ -120,9 +120,9 @@ export default async function createApp(vite) {
 	String.prototype.replaceAll = function(s, r){return this.split(s).join(r);};
 
 	const defaultMetaTags = {
-		site_name   : 'The Homebrewery - Make your Homebrew content look legit!',
-		title       : 'The Homebrewery',
-		description : 'A NaturalCrit Tool for creating authentic Homebrews using Markdown.',
+		site_name   : 'DraftHouse - Create polished tabletop publications!',
+		title       : 'DraftHouse',
+		description : 'A DraftHouse tool for creating polished tabletop publications using Markdown.',
 		image       : `${config.get('publicUrl')}/thumbnail.png`,
 		type        : 'website'
 	};

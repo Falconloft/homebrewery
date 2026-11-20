@@ -32,7 +32,7 @@ const NewBrew = ()=>{
 
 			const type = file.name.split('.').pop().toLowerCase();
 
-			alert(`This file is invalid: ${!type ? 'Missing file extension' :`.${type} files are not supported`}. Only .txt files exported from the Homebrewery are allowed.`);
+			alert(`This file is invalid: ${!type ? 'Missing file extension' :`.${type} files are not supported`}. Only .txt files exported from the DraftHouse are allowed.`);
 
 			console.log(file);
 		};

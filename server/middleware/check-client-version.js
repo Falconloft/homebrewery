@@ -1,7 +1,7 @@
 import packageJSON from '../../package.json' with { type: 'json' };
 
 export default (req, res, next)=>{
-	const userVersion = req.get('Homebrewery-Version');
+	const userVersion = req.get('DraftHouse-Version');
 	const version = packageJSON.version;
 
 	if(userVersion !== version) {

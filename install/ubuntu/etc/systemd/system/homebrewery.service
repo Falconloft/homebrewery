@@ -1,5 +1,5 @@
 [Unit]
-Description=Homebrewery Web Server
+Description=DraftHouse Web Server
 
 [Service]
 User=root

@@ -141,7 +141,7 @@ export default [
 				gen  : '<!-- This is a comment that will not be rendered into your brew. Hotkey (Ctrl/Cmd + /). -->'
 			},
 			{
-				name : 'Homebrewery Credit',
+				name : 'DraftHouse Credit',
 				icon : 'fas fa-dice-d20',
 				gen  : function(){
 					return dedent`
@@ -150,8 +150,8 @@ export default [
 						
 						{{homebreweryIcon}}
 						
-						The Homebrewery  
-						[Homebrewery.Naturalcrit.com](https://homebrewery.naturalcrit.com)
+						DraftHouse  
+						[DraftHouse](https://homebrewery.naturalcrit.com)
 						}}\n\n`;
 				},
 			},
@@ -736,7 +736,7 @@ export default [
 				name : 'Watermark',
 				icon : 'fas fa-id-card',
 				gen  : dedent`
-				{{watermark Homebrewery}}\n`
+				{{watermark DraftHouse}}\n`
 			},
 		]
 	},

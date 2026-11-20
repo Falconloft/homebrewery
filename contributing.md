@@ -1,10 +1,10 @@
-# Contributing to Homebrewery
+# Contributing to DraftHouse
 
 ## How can I contribute?
 
 ### Improve documentation
 
-As a user of Homebrewery you're the perfect candidate to help us improve our documentation. Typo corrections, error fixes, better explanations, more examples, etc. Open issues for things that could be improved. Anything. Even improvements to this document.
+As a user of DraftHouse you're the perfect candidate to help us improve our documentation. Typo corrections, error fixes, better explanations, more examples, etc. Open issues for things that could be improved. Anything. Even improvements to this document.
 
 
 ### Improve issues

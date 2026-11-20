@@ -1,5 +1,5 @@
 name: Feature Request
-description: Have an idea to improve the Homebrewery? Let us know!
+description: Have an idea to improve the DraftHouse? Let us know!
 labels: ["feature request"]
 body:
   - type: markdown

@@ -325,7 +325,7 @@ const EditorPage = (props)=>{
 
 			{alertOwnershipToTransfer && (
 				<div className='errorContainer'>
-					You must be the Owner to transfer between the Homebrewery and Google Drive!
+					You must be the Owner to transfer between the DraftHouse and Google Drive!
 					The owner of this file is {currentBrew.authors[0]}.
 					<br></br>
 					<div className='confirm' onClick={closeAlerts}> Okay </div>
@@ -334,7 +334,7 @@ const EditorPage = (props)=>{
 
 			{alertNoGoogleToTransfer && (
 				<div className='errorContainer'>
-					You must be signed in to a Google account to transfer between the Homebrewery and Google Drive!
+					You must be signed in to a Google account to transfer between the DraftHouse and Google Drive!
 					<a target='_blank' rel='noopener noreferrer' href={`https://www.naturalcrit.com/login?redirect=${window.location.href}`}>
 						<div className='confirm' onClick={closeAlerts}> Sign In </div>
 					</a>
@@ -353,8 +353,8 @@ const EditorPage = (props)=>{
 			{confirmGoogleTransfer && (
 				<div className='errorContainer'>
 					{saveGoogle
-						? 'Would you like to transfer this brew from your Google Drive storage back to the Homebrewery?'
-						: 'Would you like to transfer this brew from the Homebrewery to your personal Google Drive storage?'}
+						? 'Would you like to transfer this brew from your Google Drive storage back to the DraftHouse?'
+						: 'Would you like to transfer this brew from the DraftHouse to your personal Google Drive storage?'}
 					<br />
 					<div className='confirm' onClick={toggleGoogleStorage}> Yes </div>
 					<div className='deny' onClick={closeAlerts}>                                  No  </div>

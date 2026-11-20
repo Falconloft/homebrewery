@@ -47,8 +47,8 @@ const AccountPage = (props)=>{
 					<p><strong>Last Login: </strong>{moment(accountDetails.issued).format('dddd, MMMM Do YYYY, h:mm:ss a ZZ') || '-'}</p>
 				</div>
 				<div className='dataGroup'>
-					<h3>Homebrewery Information <NaturalCritIcon /></h3>
-					<p><strong>Brews on Homebrewery: </strong>{accountDetails.mongoCount}</p>
+					<h3>DraftHouse Information <NaturalCritIcon /></h3>
+					<p><strong>Brews on DraftHouse: </strong>{accountDetails.mongoCount}</p>
 				</div>
 				<div className='dataGroup'>
 					<h3>Google Information <i className='fab fa-google-drive'></i></h3>
@@ -65,7 +65,7 @@ const AccountPage = (props)=>{
 				</div>
 				<div className='dataGroup'>
 					<h4>Default Save Location</h4>
-					{renderSaveLocationButton('Homebrewery', 'HOMEBREWERY')}
+					{renderSaveLocationButton('DraftHouse', 'HOMEBREWERY')}
 					{renderSaveLocationButton('Google Drive', 'GOOGLE-DRIVE', accountDetails.googleId)}
 				</div>
 			</>

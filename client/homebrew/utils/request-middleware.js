@@ -1,6 +1,6 @@
 import request from 'superagent';
 
-const addHeader = (request)=>request.set('Homebrewery-Version', global.version);
+const addHeader = (request)=>request.set('DraftHouse-Version', global.version);
 
 const requestMiddleware = {
 	get    : (path)=>addHeader(request.get(path)),

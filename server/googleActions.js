@@ -79,7 +79,7 @@ const GoogleActions = {
 		const drive = googleDrive.drive({ version: 'v3', auth });
 
 		const fileMetadata = {
-			'name'     : 'Homebrewery',
+			'name'     : 'DraftHouse',
 			'mimeType' : 'application/vnd.google-apps.folder'
 		};
 

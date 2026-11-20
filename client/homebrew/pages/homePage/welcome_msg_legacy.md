@@ -1,9 +1,9 @@
-# The Homebrewery
+# DraftHouse
 
 Welcome traveler from an antique land. Please sit and tell us of what you have seen. The unheard of monsters, who slither and bite. Tell us of the wondrous items and and artifacts you have found, their mysteries yet to be unlocked. Of the vexing vocations and surprising skills you have seen.
 
 ### Homebrew D&D made easy
-The Homebrewery makes the creation and sharing of authentic looking Fifth-Edition homebrews easy. It uses [Markdown](https://help.github.com/articles/markdown-basics/) with a little CSS magic to make your brews come to life.
+DraftHouse makes the creation and sharing of authentic looking Fifth-Edition homebrews easy. It uses [Markdown](https://help.github.com/articles/markdown-basics/) with a little CSS magic to make your brews come to life.
 
 **Try it!** Simply edit the text on the left and watch it *update live* on the right.
 
@@ -38,7 +38,7 @@ This tool will **always** be free, never have ads, and I will never offer any "p
 ```
 
 ## V3.0.0 Released!
-With the latest major update to *The Homebrewery* we've implemented an extended Markdown-like syntax for block and span elements, plus a few other changes, eliminating the need for HTML tags like **div** and **span** in most cases. No raw HTML tags should be needed in a brew, and going forward, raw HTML will no longer receive debugging support (*but can still be used if you insist*).
+With the latest major update to *DraftHouse* we've implemented an extended Markdown-like syntax for block and span elements, plus a few other changes, eliminating the need for HTML tags like **div** and **span** in most cases. No raw HTML tags should be needed in a brew, and going forward, raw HTML will no longer receive debugging support (*but can still be used if you insist*).
 
 **You can enable V3 via the <span class="fa fa-info-circle" style="text-indent:0"></span> Properties button!**
 
@@ -48,12 +48,12 @@ What's new in the latest update? Check out the full changelog [here](/changelog)
 ### Bugs, Issues, Suggestions?
 Take a quick look at our [Frequently Asked Questions page](/faq) to see if your question has a handy answer.
 
-Need help getting started or just the right look for your brew? Head to [r/Homebrewery](https://www.reddit.com/r/homebrewery/submit?selftext=true&title=%5BIssue%5D%20Describe%20Your%20Issue%20Here) and let us know!
+Need help getting started or just the right look for your brew? Head to [r/DraftHouse](https://www.reddit.com/r/homebrewery/submit?selftext=true&title=%5BIssue%5D%20Describe%20Your%20Issue%20Here) and let us know!
 
-Have an idea to make The Homebrewery better? Or did you find something that wasn't quite right? Check out the [GitHub Repo](https://github.com/naturalcrit/homebrewery/) to report technical issues.
+Have an idea to make DraftHouse better? Or did you find something that wasn't quite right? Check out the [GitHub Repo](https://github.com/naturalcrit/homebrewery/) to report technical issues.
 
 ### Legal Junk
-The Homebrewery is licensed using the [MIT License](https://github.com/naturalcrit/homebrewery/blob/master/license). This means you are free to use The Homebrewery codebase any way that you want, except for claiming that you made it yourself.
+DraftHouse is licensed using the [MIT License](https://github.com/naturalcrit/homebrewery/blob/master/license). This means you are free to use DraftHouse codebase any way that you want, except for claiming that you made it yourself.
 
 If you wish to sell or in some way gain profit for what you make on this site, it's your responsibility to ensure you have the proper licenses/rights for any images or resources used.
 
@@ -78,7 +78,7 @@ If you are looking for more 5e Homebrew resources check out [r/UnearthedArcana](
 # Appendix
 
 ### Not quite Markdown
-Although the Homebrewery uses Markdown, to get all the styling features from the PHB, we had to get a little creative. Some base HTML elements are not used as expected and I've had to include a few new keywords.
+Although the DraftHouse uses Markdown, to get all the styling features from the PHB, we had to get a little creative. Some base HTML elements are not used as expected and I've had to include a few new keywords.
 
 ___
 * **Horizontal Rules** are generally used to *modify* existing elements into a different style. For example, a horizontal rule before a blockquote will give it the style of a Monster Stat Block instead of a note.
@@ -100,7 +100,7 @@ Background images should be included as HTML-style img tags. Using inline CSS yo
 
 
 ### Crediting Me
-If you'd like to credit The Homebrewery in your brew, I'd be flattered! Just reference that you made it with The Homebrewery.
+If you'd like to credit DraftHouse in your brew, I'd be flattered! Just reference that you made it with DraftHouse.
 
 
 

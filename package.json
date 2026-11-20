@@ -1,6 +1,6 @@
 {
-  "name": "homebrewery",
-  "description": "Create authentic looking D&D homebrews using only markdown",
+  "name": "drafthouse",
+  "description": "Create polished tabletop publications using Markdown",
   "version": "3.24.2",
   "type": "module",
   "engines": {

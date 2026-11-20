@@ -1,15 +1,15 @@
-# The Homebrewery
+# DraftHouse
 
-[![Homebrewery](https://circleci.com/gh/naturalcrit/homebrewery/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/naturalcrit/homebrewery?branch=master)
+[![DraftHouse](https://circleci.com/gh/naturalcrit/homebrewery/tree/master.svg?style=svg)](https://app.circleci.com/pipelines/github/naturalcrit/homebrewery?branch=master)
 
-The Homebrewery is a tool for making authentic looking [D&D content][dnd-content-url]
+DraftHouse is a tool for making authentic looking [D&D content][dnd-content-url]
 using [Markdown][markdown-url]. It is distributed under the terms of the [MIT License](./license).
 
 [dnd-content-url]: https://dnd.wizards.com/products/tabletop-games/rpg-products/rpg_playershandbook
 [markdown-url]: https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet
 
 ## Quick Start
-The easiest way to get started using The Homebrewery is to use it
+The easiest way to get started using DraftHouse is to use it
 [on our website][homebrewery-url]. The code is open source, so feel free to
 clone it and tinker with it. If you want to make changes to the code, you can run
 your own local version for testing by following the installation instructions
@@ -18,7 +18,7 @@ below.
 [homebrewery-url]: https://homebrewery.naturalcrit.com
 
 ### Installation
-First, install three programs that The Homebrewery requires to run and retrieve
+First, install three programs that DraftHouse requires to run and retrieve
 updates:
 
 1. install [node](https://nodejs.org/en/), version v16 or higher.
@@ -38,7 +38,7 @@ updates:
     1. Click "New" and paste in the path to the MongoDB "bin" folder.
     1. Click "OK" three times to close all the windows.
     1. In the second command prompt, run "mongo", which allows you to edit the database.
-    1. Type `use homebrewery` to create The Homebrewery database. You should see `switched to db homebrewery`.
+    1. Type `use homebrewery` to create DraftHouse database. You should see `switched to db homebrewery`.
     1. Type `db.brews.insertOne({"title":"test"})` to create a blank document. You should see `{
 acknowledged: true,
 insertedId: ObjectId("63c2fce9e5ac5a94fe2410cf")
@@ -75,9 +75,9 @@ it using the two commands:
 1. `npm install`
 1. `npm start`
 
-When the Homebrewery server is started for the first time, it will modify the database to create the indexes required for better Homebrewery performance. This may take a few moments to complete for each index, dependent on how much content is in your local database - a brand new, empty database should be done in seconds.
+When the DraftHouse server is started for the first time, it will modify the database to create the indexes required for better DraftHouse performance. This may take a few moments to complete for each index, dependent on how much content is in your local database - a brand new, empty database should be done in seconds.
 
-On completion, you should be able to go to [http://localhost:8000](http://localhost:8000) in your browser and use The Homebrewery offline.
+On completion, you should be able to go to [http://localhost:8000](http://localhost:8000) in your browser and use DraftHouse offline.
 
 If you had any issue at all, here are some links that may be useful:
 - [Course](https://learn.mongodb.com/courses/m103-basic-cluster-administration) on cluster administration, useful for beginners
@@ -103,7 +103,7 @@ If you are developing locally and would like to generate your own, follow the
 above steps and then run `npm run phb`.
 
 ## Issues, Suggestions, and Bugs
-If you run into any issues using The Homebrewery or have suggestions for
+If you run into any issues using DraftHouse or have suggestions for
 improvement, please submit an issue [on GitHub][repo-issues-url].
 You can also get help for issues on the subreddit [r/homebrewery][subreddit-url]
 
@@ -117,7 +117,7 @@ You can check out the [changelog](./changelog.md).
 ## License
 
 This project is licensed under the [MIT license](./license), which means you
-are free to use The Homebrewery in any way that you want, except for claiming
+are free to use DraftHouse in any way that you want, except for claiming
 that you made it yourself.
 
 If you wish to sell, or in some way gain profit for, what's created on this site,

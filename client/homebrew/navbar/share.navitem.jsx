@@ -12,7 +12,7 @@ const getRedditLink = (brew)=>{
 	const text = dedent`
 			Hey guys! I've been working on this homebrew. I'd love your feedback. Check it out.
 
-			**[Homebrewery Link](${global.config.baseUrl}/share/${getShareId(brew)})**`;
+			**[DraftHouse Link](${global.config.baseUrl}/share/${getShareId(brew)})**`;
 
 	return `https://www.reddit.com/r/UnearthedArcana/submit?title=${encodeURIComponent(brew.title.toWellFormed())}&text=${encodeURIComponent(text)}`;
 };

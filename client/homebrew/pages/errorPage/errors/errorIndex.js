@@ -31,7 +31,7 @@ const errorIndex = (props)=>{
 
 			- Go to https://www.naturalcrit.com/login and click logout if present (in small text at the bottom of the page).
 			- Click "Sign In with Google", which will refresh your Google credentials.
-			- After completing the sign in process, return to Homebrewery and refresh/reload the page so that it can pick up the updated credentials.
+			- After completing the sign in process, return to DraftHouse and refresh/reload the page so that it can pick up the updated credentials.
 			- If this was the source of the issue, it should now be resolved.
 
 			If following these steps does not resolve the issue, please let us know!`,
@@ -42,7 +42,7 @@ const errorIndex = (props)=>{
 			
 			This file was saved on Google Drive, but this link doesn't work anymore.
 			${props.brew.authors?.length > 0
-		? `Note that this brew belongs to the Homebrewery account **${props.brew.authors[0]}**,
+		? `Note that this brew belongs to the DraftHouse account **${props.brew.authors[0]}**,
 				${props.brew.account
 		? `which is
 						${props.brew.authors[0] == props.brew.account
@@ -53,16 +53,16 @@ const errorIndex = (props)=>{
 }`
 		: ''
 }
-			The Homebrewery cannot delete files from Google Drive on its own, so there
+			DraftHouse cannot delete files from Google Drive on its own, so there
 			are three most likely possibilities:
 			:
 			- **The Google Drive files may have been accidentally deleted.** Look in
 			the Google Drive account that owns this brew (or ask the owner to do so),
-			and make sure the Homebrewery folder is still there, and that it holds your brews
+			and make sure the DraftHouse folder is still there, and that it holds your brews
 			as text files.
 			- **You may have changed the sharing settings for your files.** If the files
 			are still on Google Drive, change all of them to be shared *with everyone who has
-			the link* so the Homebrewery can access them.
+			the link* so the DraftHouse can access them.
 			- **The Google Account may be closed.** Google may have removed the account
 			due to inactivity or violating a Google policy. Make sure the owner can
 			still access Google Drive normally and upload/download files to it.
@@ -118,9 +118,9 @@ const errorIndex = (props)=>{
 
 		// Brew load error
 		'05' : dedent`
-		## No Homebrewery document could be found.
+		## No DraftHouse document could be found.
 		
-		The server could not locate the Homebrewery document. It was likely deleted by
+		The server could not locate the DraftHouse document. It was likely deleted by
 		its owner.
 		
 		:
@@ -131,15 +131,15 @@ const errorIndex = (props)=>{
 
 		// Brew save error
 		'06' : dedent`
-		## Unable to save Homebrewery document.
+		## Unable to save DraftHouse document.
 		
-		An error occurred wil attempting to save the Homebrewery document.`,
+		An error occurred wil attempting to save the DraftHouse document.`,
 
 		// Brew delete error
 		'07' : dedent`
-		## Unable to delete Homebrewery document.
+		## Unable to delete DraftHouse document.
 		
-		An error occurred while attempting to remove the Homebrewery document.
+		An error occurred while attempting to remove the DraftHouse document.
 		
 		:
 
@@ -147,9 +147,9 @@ const errorIndex = (props)=>{
 
 		// Author delete error
 		'08' : dedent`
-		## Unable to remove user from Homebrewery document.
+		## Unable to remove user from DraftHouse document.
 		
-		An error occurred while attempting to remove the user from the Homebrewery document author list!
+		An error occurred while attempting to remove the user from the DraftHouse document author list!
 		
 		:
 
@@ -157,9 +157,9 @@ const errorIndex = (props)=>{
 
 		// Theme load error
 		'09' : dedent`
-		## No Homebrewery theme document could be found.
+		## No DraftHouse theme document could be found.
 		
-		The server could not locate the Homebrewery document. It was likely deleted by
+		The server could not locate the DraftHouse document. It was likely deleted by
 		its owner.
 		
 		:
@@ -178,9 +178,9 @@ const errorIndex = (props)=>{
 
 		// ID validation error
 		'11' : dedent`
-		## No Homebrewery document could be found.
+		## No DraftHouse document could be found.
 		
-		The server could not locate the Homebrewery document. The Brew ID failed the validation check.
+		The server could not locate the DraftHouse document. The Brew ID failed the validation check.
 		
 		:
 

@@ -33,7 +33,7 @@ describe('request-middleware', ()=>{
 		requestMiddleware.get('path');
 
 		expect(testFn).toHaveBeenCalledWith('path');
-		expect(setFn).toHaveBeenCalledWith('Homebrewery-Version', '999');
+		expect(setFn).toHaveBeenCalledWith('DraftHouse-Version', '999');
 	});
 
 	it('should add header to put', ()=>{
@@ -45,7 +45,7 @@ describe('request-middleware', ()=>{
 		requestMiddleware.put('path');
 
 		expect(testFn).toHaveBeenCalledWith('path');
-		expect(setFn).toHaveBeenCalledWith('Homebrewery-Version', '999');
+		expect(setFn).toHaveBeenCalledWith('DraftHouse-Version', '999');
 	});
 
 	it('should add header to post', ()=>{
@@ -57,7 +57,7 @@ describe('request-middleware', ()=>{
 		requestMiddleware.post('path');
 
 		expect(testFn).toHaveBeenCalledWith('path');
-		expect(setFn).toHaveBeenCalledWith('Homebrewery-Version', '999');
+		expect(setFn).toHaveBeenCalledWith('DraftHouse-Version', '999');
 	});
 
 	it('should add header to delete', ()=>{
@@ -69,6 +69,6 @@ describe('request-middleware', ()=>{
 		requestMiddleware.delete('path');
 
 		expect(testFn).toHaveBeenCalledWith('path');
-		expect(setFn).toHaveBeenCalledWith('Homebrewery-Version', '999');
+		expect(setFn).toHaveBeenCalledWith('DraftHouse-Version', '999');
 	});
 });

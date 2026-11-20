@@ -1,6 +1,6 @@
 # Game Icons License
 
-The font used in gameIcons.woff / gameIcons.less / gameIcons.js, and usable in the Homebrewery as "gi" icons, are a subset of the Game-Icons.net library of icons.
+The font used in gameIcons.woff / gameIcons.less / gameIcons.js, and usable in the DraftHouse as "gi" icons, are a subset of the Game-Icons.net library of icons.
 
 ## The license
 

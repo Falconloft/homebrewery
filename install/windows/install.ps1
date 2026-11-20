@@ -1,4 +1,4 @@
-Write-Host Homebrewery Install -BackgroundColor Black -ForegroundColor Yellow
+Write-Host DraftHouse Install -BackgroundColor Black -ForegroundColor Yellow
 Write-Host =================== -BackgroundColor Black -ForegroundColor Yellow
 Write-Host Install Chocolatey -BackgroundColor Black -ForegroundColor Yellow
 Write-Host Instructions from https://chocolate.org/install -BackgroundColor Black -ForegroundColor Yellow
@@ -22,16 +22,16 @@ Write-Host Refresh Environment -BackgroundColor Black -ForegroundColor Yellow
 Import-Module "$env:ChocolateyInstall\helpers\chocolateyProfile.psm1"
 Update-SessionEnvironment
 
-Write-Host Create Homebrewery directory - C:\Homebrewery -BackgroundColor Black -ForegroundColor Yellow
+Write-Host Create DraftHouse directory - C:\DraftHouse -BackgroundColor Black -ForegroundColor Yellow
 
 mkdir C:\Hombrewery
 cd C:\Hombrewery
 
-Write-Host Download Homebrewery project files -BackgroundColor Black -ForegroundColor Yellow
+Write-Host Download DraftHouse project files -BackgroundColor Black -ForegroundColor Yellow
 
 git clone https://github.com/naturalcrit/homebrewery.git
 
-Write-Host Install Homebrewery files -BackgroundColor Black -ForegroundColor Yellow
+Write-Host Install DraftHouse files -BackgroundColor Black -ForegroundColor Yellow
 
 cd homebrewery
 
@@ -43,9 +43,9 @@ Write-Host Set install type to 'local' -BackgroundColor Black -ForegroundColor Y
 [System.Environment]::SetEnvironmentVariable('NODE_ENV', 'local')
 
 Write-Host INSTALL COMPLETE -BackgroundColor Black -ForegroundColor Yellow
-Write-Host To start Homebrewery in the future, open a terminal in the Homebrewery directory and run npm start -BackgroundColor Black -ForegroundColor Yellow
+Write-Host To start DraftHouse in the future, open a terminal in the DraftHouse directory and run npm start -BackgroundColor Black -ForegroundColor Yellow
 Write-Host ================================================================================================== -BackgroundColor Black -ForegroundColor Yellow
 
-Write-Host Start Homebrewery -BackgroundColor Black -ForegroundColor Yellow
+Write-Host Start DraftHouse -BackgroundColor Black -ForegroundColor Yellow
 
 npm start

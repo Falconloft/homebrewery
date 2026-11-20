@@ -108,7 +108,7 @@ const BrewCleanup = ({})=>{
 								<td><strong>{brew.title || 'No Title'}</strong></td>
 								<td style={{ width: '200px' }}>{Moment(brew.updatedAt).fromNow()}</td>
 								<td>{brew.lastViewed ? Moment(brew.lastViewed).fromNow() : 'No last viewed date'}</td>
-								<td>{brew.googleId ? 'Google' : 'Homebrewery'}</td>
+								<td>{brew.googleId ? 'Google' : 'DraftHouse'}</td>
 							</tr>;
 						})}
 				</tbody>
