@@ -253,14 +253,15 @@ export default function pageRoutes({
 	app.get('/new/:id', asyncHandler(getBrew('share')), asyncHandler(async(req, res, next)=>{
 		sanitizeBrew(req.brew, 'share');
 		const brew = {
-			shareId  : req.brew.shareId,
-			title    : `CLONE - ${req.brew.title}`,
-			text     : req.brew.text,
-			style    : req.brew.style,
-			renderer : req.brew.renderer,
-			theme    : req.brew.theme,
-			tags     : req.brew.tags,
-			snippets : req.brew.snippets
+			shareId     : req.brew.shareId,
+			title       : `CLONE - ${req.brew.title}`,
+			text        : req.brew.text,
+			style       : req.brew.style,
+			renderer    : req.brew.renderer,
+			theme       : req.brew.theme,
+			tags        : req.brew.tags,
+			pageObjects : req.brew.pageObjects,
+			snippets    : req.brew.snippets
 		};
 		req.brew = _.defaults(brew, DEFAULT_BREW);
 

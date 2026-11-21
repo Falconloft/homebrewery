@@ -46,6 +46,23 @@ const migrateSystemsToTags = (brew)=>{
 
 const MAX_TITLE_LENGTH = 100;
 
+const validatePageObjects = async (pageObjects)=>{
+	if(pageObjects === undefined) return;
+	if(!Array.isArray(pageObjects)) {
+		throw { name: 'PageObject Validation Error', message: 'pageObjects must be an array', status: 400 };
+	}
+
+	try {
+		const brew = new HomebrewModel({ pageObjects });
+		await brew.validate('pageObjects');
+	} catch (err) {
+		if(!['ValidationError', 'CastError', 'StrictModeError'].includes(err.name))
+			throw err;
+
+		throw { name: 'PageObject Validation Error', message: `Invalid pageObjects: ${err.message}`, status: 400 };
+	}
+};
+
 const api = {
 	homebrewApi : router,
 	getId       : (req)=>{
@@ -259,6 +276,7 @@ const api = {
 		let newHomebrew = new HomebrewModel(brew);
 		newHomebrew.editId = nanoid(12);
 		newHomebrew.shareId = nanoid(12);
+		await validatePageObjects(newHomebrew.pageObjects);
 
 		let googleId, saved;
 		if(saveToGoogle) {
@@ -393,6 +411,7 @@ const api = {
 		brew.text        = api.mergeBrewText(brew);
 		brew.updatedAt   = new Date();
 		brew.version     = (brew.version || 1) + 1;
+		await validatePageObjects(brew.pageObjects);
 		if(req.account) {
 			brew.authors = _.uniq(_.concat(brew.authors, req.account.username));
 			brew.invitedAuthors = _.uniq(_.filter(brew.invitedAuthors, (a)=>req.account.username !== a));

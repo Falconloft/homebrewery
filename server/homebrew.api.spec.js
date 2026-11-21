@@ -3,6 +3,64 @@
 import { splitTextStyleAndMetadata } from '../shared/helpers.js';
 import dedent from 'dedent';
 
+const { model: HomebrewSchemaModel } = jest.requireActual('./homebrew.model.js');
+
+describe('PageObject schema', ()=>{
+	it('defaults pageObjects to an empty array and accepts valid objects', async()=>{
+		const brew = new HomebrewSchemaModel({
+			pageCount  : 1,
+			pageObjects : [{
+				id      : 'object-1',
+				type    : 'text',
+				page    : 1,
+				x       : 0,
+				y       : 0,
+				width   : 0.5,
+				height  : 0.25,
+				textBox : { content: 'Hello' }
+			}]
+		});
+
+		expect(new HomebrewSchemaModel().pageObjects).toEqual([]);
+		await expect(brew.validate()).resolves.toBeUndefined();
+	});
+
+	it('rejects out-of-bounds objects and unsafe image sources', async()=>{
+		const invalidBrews = [
+			new HomebrewSchemaModel({
+				pageCount  : 1,
+				pageObjects : [{
+					id      : 'object-1',
+					type    : 'text',
+					page    : 1,
+					x       : 0.8,
+					y       : 0,
+					width   : 0.5,
+					height  : 0.25,
+					textBox : { content: 'Hello' }
+				}]
+			}),
+			new HomebrewSchemaModel({
+				pageCount  : 1,
+				pageObjects : [{
+					id     : 'object-2',
+					type   : 'image',
+					page   : 1,
+					x      : 0,
+					y      : 0,
+					width  : 0.5,
+					height : 0.25,
+					image  : { src: 'javascript:alert(1)' }
+				}]
+			})
+		];
+
+		for(const brew of invalidBrews) {
+			await expect(brew.validate()).rejects.toMatchObject({ name: 'ValidationError' });
+		}
+	});
+});
+
 describe('Tests for api', ()=>{
 	let api;
 	let google;
@@ -30,9 +88,11 @@ describe('Tests for api', ()=>{
 		modelBrew = (brew)=>({
 			...brew,
 			save         : saveFunc,
+			validate     : jest.fn(async()=>undefined),
 			markModified : markModifiedFunc,
 			toObject     : function() {
 				delete this.save;
+				delete this.validate;
 				delete this.toObject;
 				delete this.markModified;
 				return this;
@@ -361,6 +421,7 @@ describe('Tests for api', ()=>{
 				trashed     : false,
 				updatedAt   : undefined,
 				views       : 0,
+				pageObjects : [],
 				bleedSize   : {
 					top    : '.125in',
 					bottom : '.125in',
@@ -618,12 +679,14 @@ describe('Tests for api', ()=>{
 		});
 
 		it('excludeStubProps removes the correct keys from the original object', ()=>{
-			const sent = Object.assign({}, googleBrew);
+			const pageObjects = [{ id: 'object-1', type: 'text' }];
+			const sent = Object.assign({}, googleBrew, { pageObjects });
 			const result = api.excludeStubProps(sent);
 
 			expect(sent).not.toEqual(googleBrew);
 			expect(result.text).toBeUndefined();
 			expect(result.textBin).toBeUndefined();
+			expect(result.pageObjects).toEqual(pageObjects);
 			expect(result.renderer).toBe('v3');
 			expect(result.pageCount).toBe(1);
 		});
@@ -701,6 +764,7 @@ describe('Tests for api', ()=>{
 				shareId     : expect.any(String),
 				style       : undefined,
 				tags        : [],
+				pageObjects : [],
 				text        : '```metadata\n' +
     							'title: asdf\n' +
     							'bleedSize: {}\n' +
@@ -737,6 +801,30 @@ describe('Tests for api', ()=>{
 					height : '11in',
 				},
 			});
+		});
+
+		it('should preserve pageObjects when creating a brew', async()=>{
+			const pageObjects = [{
+				id      : 'object-1',
+				type    : 'text',
+				page    : 1,
+				x       : 0,
+				y       : 0,
+				width   : 0.5,
+				height  : 0.25,
+				textBox : { content: 'Hello' }
+			}];
+
+			await api.newBrew({ body: { text: 'asdf', pageObjects }, query: {} }, res);
+
+			expect(res.send).toHaveBeenCalledWith(expect.objectContaining({ pageObjects }));
+		});
+
+		it('should reject a non-array pageObjects value', async()=>{
+			await expect(api.newBrew({
+				body  : { text: 'asdf', pageObjects: 'invalid' },
+				query : {}
+			}, res)).rejects.toMatchObject({ status: 400, message: 'pageObjects must be an array' });
 		});
 
 		it('should remove edit/share/google ids', async ()=>{
@@ -803,6 +891,7 @@ describe('Tests for api', ()=>{
 				googleId  : expect.any(String),
 				style     : undefined,
 				tags      : [],
+				pageObjects : [],
 				text      : undefined,
 				textBin   : undefined,
 				theme     : '5ePHB',
@@ -1014,7 +1103,22 @@ describe('Tests for api', ()=>{
 		// });
 
 		it('should save brew, no ID', async ()=>{
-			const brewFromClient = { version: 1, hash: '098f6bcd4621d373cade4e832627b4f6', patches: '' };
+			const pageObjects = [{
+				id      : 'object-1',
+				type    : 'text',
+				page    : 1,
+				x       : 0,
+				y       : 0,
+				width   : 0.5,
+				height  : 0.25,
+				textBox : { content: 'Hello' }
+			}];
+			const brewFromClient = {
+				version : 1,
+				hash    : '098f6bcd4621d373cade4e832627b4f6',
+				patches : '',
+				pageObjects
+			};
 			const brewFromServer = { version: 1, text: 'test', title: 'Test Title', description: 'Test Description' };
 
 			model.save = jest.fn((brew)=>{return brew;});
@@ -1033,6 +1137,7 @@ describe('Tests for api', ()=>{
 					_id         : '1',
 					description : 'Test Description',
 					hash        : '098f6bcd4621d373cade4e832627b4f6',
+					pageObjects,
 					title       : 'Test Title',
 					version     : 2
 				})

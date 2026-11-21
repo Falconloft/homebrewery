@@ -19,6 +19,7 @@ const DEFAULT_BREW = {
 	views        : 0,
 	published    : false,
 	pageCount    : 1,
+	pageObjects  : [],
 	gDrive       : false,
 	trashed      : false,
 	bleedSize    : { top: '.125in', bottom: '.125in', inner: '.125in', outer: '.125in' },
